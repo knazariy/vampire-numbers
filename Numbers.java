@@ -63,7 +63,7 @@ public class Numbers {
             }
         }
 
-        for(int i = 0; i < 9; i++)
+        for(int i = 0; i < 9; i++)      //EDIT ON GITHUB: MISTAKE HERE! i < 10*
             if (usedDigits.containsKey(i))
                 if (usedDigits.get(i) != 0) return false;
 
