@@ -10,7 +10,7 @@ public class Numbers {
         int input = n;
         int t = input;
 
-        if (input / 1000 < 1 || input / 1000 >= 10) //Only for 4-digit numbers
+        if (input / 1000 < 1)                       //Only for 4-and-more-digit numbers
             return false;
 
         while (t > 0) {                             //Getting every digit
@@ -18,7 +18,7 @@ public class Numbers {
             t /= 10;
         }
 
-        combinations = Combinations.get2DCombinations(digits);
+        combinations = Combinations.getCombinations(input);
 
         //This is where magic happens (Checking for vampire numbers)
         for (Integer i : combinations)

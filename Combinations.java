@@ -1,21 +1,21 @@
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Combinations {
-    public static Set<Integer> get2DCombinations(List<Integer> digits) {
-        Set<Integer> combinations = new TreeSet<>();
+    public static Set<Integer> getCombinations(int in) {
+        String input = in+"";
+        Set<Integer> result = new TreeSet<>();
+        for(String s : backtracking("", input, input.length() / 2))
+            result.add(Integer.parseInt(s));
+        return result;
+    }
 
-        int t;
-        for(Integer i : digits) {
-            for (Integer j : digits) {
-                t = i * 10 + j;
-                if (t / 10 >= 1) {
-                    combinations.add(t);
-                }
-            }
-        }
+    private static Set<String> backtracking(String actual, String remaining, int length) {
+        if (actual.length() == length)
+            return new HashSet<>(Arrays.asList(actual));
 
-        return combinations;
+        Set<String> result = new HashSet<>();
+        for(int i = 0; i < remaining.length(); i++)
+            result.addAll(backtracking(actual + remaining.charAt(i), remaining.substring(0, i) + remaining.substring(i + 1), length));
+        return result;
     }
 }
