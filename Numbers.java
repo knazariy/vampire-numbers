@@ -21,21 +21,15 @@ public class Numbers {
         combinations = Combinations.get2DCombinations(digits);
 
         //This is where magic happens (Checking for vampire numbers)
-        for (Integer i : combinations) {
-            for (Integer j : combinations) {
-                if (i * j == input) {
-                    if(isValidPair(new int[] {i, j}, digits)) {
-                        System.out.println(i + " * " + j + " = " + input);
+        for (Integer i : combinations)
+            for (Integer j : combinations)
+                if (i * j == input)
+                    if(isValidPair(new int[] {i, j}, digits))
                         return true;
-                    }
-                }
-            }
-        }
 
         return false;
     }
 
-    //DO NOT CHANGE
     private static boolean isValidPair(int[] combination, List<Integer> digits) {
         HashMap<Integer, Integer> usedDigits = new HashMap<>();
         for(Integer i : digits) {
@@ -54,11 +48,9 @@ public class Numbers {
             }
         }
 
-        for(int i = 0; i < combDigits.length; i++) {
-            if (usedDigits.containsKey(combDigits[i])) {
+        for(int i = 0; i < combDigits.length; i++)
+            if (usedDigits.containsKey(combDigits[i]))
                 usedDigits.put(combDigits[i], usedDigits.get(combDigits[i])-1);
-            }
-        }
 
         for(int i = 0; i < 10; i++)
             if (usedDigits.containsKey(i))
